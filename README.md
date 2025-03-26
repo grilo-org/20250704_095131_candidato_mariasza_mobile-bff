@@ -1,12 +1,11 @@
 # 😼🚀 I'm Mottu BFF Test 🛸🐾
 
+**Teste prático para desenvolvedores Backend (Node/NestJS)**
+
 O app Mottu é responsável por viabilizar nossos produtos e soluções para nossos clientes. Utilizamos o conceito de BFF (Backend for front), onde serviços em nodes fazem a interface do app com N serviços de backend.
 Para testar o seu conhecimento, vamos propor um teste que atende uma das funções do BFF, que é otimizar as APIs para nosso app.
 
 Vamos utilizar API's públicas, e seu desafio é acabar com a solidão dos personagens de Rick and Morty, linkando um gato para cada personagem 😼.
-
-
-**Teste prático para desenvolvedores Backend (Node/NestJS)**
 
 Este teste é separado em **3 níveis de dificuldade**. Você pode desenvolver o teste atendendo apenas a um nível, ou todos.
 
