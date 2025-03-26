@@ -113,6 +113,7 @@ Este teste é separado em **3 níveis de dificuldade**. Você pode desenvolver o
     
 - Adicionar documentação via **Swagger** para todas as rotas
 - Implementar testes de integração
+- Middleware global de **tratamento de erros**
 
 ---
 
@@ -121,7 +122,6 @@ Este teste é separado em **3 níveis de dificuldade**. Você pode desenvolver o
 - Utilizar **Clean Architecture** ou **DDD**
 - Usar **Docker** para setup e execução
 - Adicionar um **Logger customizado**
-- Middleware global de **tratamento de erros**
 - Job/Worker para atualização periódica do cache
 - Deploy em plataforma gratuita (Render, Vercel, Fly.io, etc)
 
@@ -132,3 +132,16 @@ Este teste é separado em **3 níveis de dificuldade**. Você pode desenvolver o
 - Um único commit com tudo
 - Copiar código de outro repositório (a gente percebe)
 - Usar IA para escrever o código — queremos ver seu raciocínio
+
+---
+
+## 📊 Critérios de Avaliação
+
+Iremos fazer uma pré-avaliação da entrega do teste, e caso atenda os requisitos pelo menos do nível 1, o próximo passo é uma conversa técnica, onde você irá aprensentar o projeto e iremos avaliar:
+- Organização do projeto, estrutura e arquitetura.
+- Capacidade de comunicação.
+- Domínio de boas práticas do NestJS.
+
+Não é obrigatório fazer todos os niveis e extras, mas quanto mais pontos, mais seremos capazes de avaliar corretamente o seu nível de conhecimento.
+
+Boa sorte. 🍀
