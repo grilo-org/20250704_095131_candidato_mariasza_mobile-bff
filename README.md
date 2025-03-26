@@ -29,8 +29,7 @@ Este teste é separado em **3 níveis de dificuldade**, assim como no nosso test
 - Criar uma rota:
     
     ```
-    bash
-    CopiarEditar
+    
     GET /v1/pairs
     
     ```
@@ -40,8 +39,7 @@ Este teste é separado em **3 níveis de dificuldade**, assim como no nosso test
     - Exemplo de resposta:
         
         ```json
-        json
-        CopiarEditar
+
         {
           "character": {
             "name": "Morty Smith",
@@ -71,8 +69,7 @@ Este teste é separado em **3 níveis de dificuldade**, assim como no nosso test
 - Criar a rota:
     
     ```
-    bash
-    CopiarEditar
+
     GET /v1/breeds
     
     ```
@@ -92,8 +89,7 @@ Este teste é separado em **3 níveis de dificuldade**, assim como no nosso test
 - Criar:
     
     ```
-    bash
-    CopiarEditar
+
     POST /v1/pairs/favorite
     
     ```
@@ -103,8 +99,7 @@ Este teste é separado em **3 níveis de dificuldade**, assim como no nosso test
 - Criar:
     
     ```
-    bash
-    CopiarEditar
+
     GET /v1/pairs/favorites
     
     ```
