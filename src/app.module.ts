@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
-import { CatsModule } from './resource/cats/cats.module';
-import { PairsModule } from './resource/pairs/pairs.module';
-import { RickandmortyModule } from './resource/rickandmorty/rickandmorty.module';
 import { HttpModule } from './shared/http/http.module';
+import { CatsModule } from './resources/cats/cats.module';
+import { PairsModule } from './resources/pairs/pairs.module';
+import { RickandmortyModule } from './resources/rickandmorty/rickandmorty.module';
 
 @Module({
   imports: [CatsModule, PairsModule, RickandmortyModule, HttpModule],

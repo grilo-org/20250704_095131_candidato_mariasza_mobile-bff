@@ -5,6 +5,6 @@ import { CatsApiService } from './cats-api.service';
 
 @Module({
   controllers: [CatsController],
-  providers: [CatsService, CatsApiService],
+  providers: [CatsService, CatsService, CatsApiService],
 })
 export class CatsModule {}
