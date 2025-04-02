@@ -31,6 +31,7 @@ Backend For Frontend (BFF) desenvolvido com NestJS, integrando APIs públicas pa
 - Inclusão de suporte a **Docker** e **Docker Compose**, para facilitar o ambiente de desenvolvimento, isolamento e execução do projeto.
 - Organização enxuta: evitamos estruturas com camadas excessivas para manter a simplicidade, sem abrir mão dos princípios de Clean Architecture.
 - Implementação de um `HttpService` genérico com a função `makeRequest`, que permite realizar chamadas HTTP com flexibilidade de método, headers, body, query params e timeout. Isso facilita o reaproveitamento e centraliza o tratamento de erros.
+- Uso de variáveis de ambiente com o pacote `@nestjs/config`, permitindo configurar URLs externas e outros parâmetros de forma segura e flexível via `.env`.
 
 ---
 
@@ -47,6 +48,21 @@ src/
 └── shared/
     └── http/            # Módulo genérico de chamadas HTTP
 ```
+
+---
+
+## 📄 Variáveis de Ambiente
+
+Crie um arquivo `.env` na raiz do projeto com o seguinte conteúdo:
+
+```env
+THE_CAT_API_BASE_URL=https://api.thecatapi.com/v1
+RICK_AND_MORTY_API_BASE_URL=https://rickandmortyapi.com/api
+```
+
+Essas variáveis são injetadas automaticamente via `@nestjs/config` e utilizadas nas integrações externas.
+
+---
 
 ## 📦 Como rodar o projeto
 
