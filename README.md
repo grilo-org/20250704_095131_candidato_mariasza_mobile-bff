@@ -30,6 +30,7 @@ Backend For Frontend (BFF) desenvolvido com NestJS, integrando APIs públicas pa
 - Criação de um módulo genérico `HttpModule` dentro de `shared/http`, responsável por centralizar as chamadas HTTP usando Axios, facilitando manutenção, testes e extensões futuras (como interceptors ou retries).
 - Inclusão de suporte a **Docker** e **Docker Compose**, para facilitar o ambiente de desenvolvimento, isolamento e execução do projeto.
 - Organização enxuta: evitamos estruturas com camadas excessivas para manter a simplicidade, sem abrir mão dos princípios de Clean Architecture.
+- Implementação de um `HttpService` genérico com a função `makeRequest`, que permite realizar chamadas HTTP com flexibilidade de método, headers, body, query params e timeout. Isso facilita o reaproveitamento e centraliza o tratamento de erros.
 
 ---
 
