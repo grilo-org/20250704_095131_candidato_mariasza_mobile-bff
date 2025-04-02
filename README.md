@@ -1,147 +1,73 @@
-# 😼🚀 I'm Mottu BFF Test 🛸🐾
+<p align="center">
+  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
+</p>
 
-**Teste prático para desenvolvedores Backend (Node/NestJS)**
+[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
+[circleci-url]: https://circleci.com/gh/nestjs/nest
 
-O app Mottu é responsável por viabilizar nossos produtos e soluções para nossos clientes. Utilizamos o conceito de BFF (Backend for front), onde serviços em nodes fazem a interface do app com N serviços de backend.
-Para testar o seu conhecimento, vamos propor um teste que atende uma das funções do BFF, que é otimizar as APIs para nosso app.
+  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
+    <p align="center">
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
+<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
+<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
+<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
+<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
+<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
+<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
+  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
+    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
+  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
+</p>
+  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
+  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-Vamos utilizar API's públicas, e seu desafio é acabar com a solidão dos personagens de Rick and Morty, linkando um gato para cada personagem 😼.
+## Description
 
-Este teste é separado em **3 níveis de dificuldade**. Você pode desenvolver o teste atendendo apenas a um nível, ou todos.
+[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
----
+## Installation
 
-## 🔧 Etapas iniciais (obrigatórias para todos os níveis)
+```bash
+$ npm install
+```
 
-1. Faça um fork deste repositório de teste (privado) e adicione os seguintes usuários como colaboradores: `@jeanchrocha`, `@brunosmm`, `@BetoMottu`, `@galacerda`.
-2. Crie um projeto NestJS com o namespace: `@mottu/bff`.
-3. Consuma as seguintes APIs públicas:
-    - [The Cat API](https://developers.thecatapi.com/)
-    - [Rick and Morty API](https://rickandmortyapi.com/documentation)
-4. Documente no README:
-    - Como rodar o projeto
-    - Quais níveis foram implementados
-    - Descrição das decisões técnicas tomadas
-    - Como executar os testes
-    - Como testar as rotas
+## Running the app
 
----
+```bash
+# development
+$ npm run start
 
-## ✅ NÍVEL 1 — nome da branch: `level_1`
+# watch mode
+$ npm run start:dev
 
-- Executar todas as etapas iniciais
-- Estruturar o projeto em módulos: `cats`, `rickandmorty`, `pairs`
-- Criar uma rota:
-    
-    ```
-    
-    GET /v1/pairs
-    
-    ```
-    
-    Que retorna um personagem aleatório da Rick and Morty API junto com um gato aleatório da The Cat API.
-    
-    - Exemplo de resposta:
-        
-        ```json
+# production mode
+$ npm run start:prod
+```
 
-        {
-          "character": {
-            "name": "Morty Smith",
-            "image": "https://...",
-            "species": "Human"
-          },
-          "cat": {
-            "id": "b1c",
-            "image": "https://..."
-          }
-        }
-        
-        ```
-        
-- Usar `HttpModule` do NestJS para consumir as APIs externas
-- Implementar tratamento de erro para falhas de rede ou dados inválidos
-- Criar DTOs para tipagem das respostas
+## Test
 
----
+```bash
+# unit tests
+$ npm run test
 
-## ✅ NÍVEL 2 — nome da branch: `level_2`
+# e2e tests
+$ npm run test:e2e
 
-- Tudo do **Nível 1**, mais:
-- Criar filtros para a rota `/v1/pairs/search`, como:
-    - `characterName`: nome (ou parte) do personagem
-    - `catBreed`: filtro por raça do gato (disponível na The Cat API)
-- Criar a rota:
-    
-    ```
+# test coverage
+$ npm run test:cov
+```
 
-    GET /v1/breeds
-    
-    ```
-    
-    Que retorna as raças disponíveis de gatos
-    
-- Implementar **cache** (em memória ou Redis) para as chamadas das APIs públicas
-- Separar `services` e `controllers` para cada módulo (`RickAndMorty`, `Cats`, `Pairs`)
-- Criar ao menos 1 teste unitário para cada service
+## Support
 
----
+Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## ✅ NÍVEL 3 — nome da branch: `level_3`
+## Stay in touch
 
-- Tudo do **Nível 2**, mais:
-- Adicionar paginação para a listagem `/v1/pairs`
-- Criar:
-    
-    ```
+- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
+- Website - [https://nestjs.com](https://nestjs.com/)
+- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-    POST /v1/pairs/favorite
-    
-    ```
-    
-    Para salvar um vínculo favorito (em memória ou SQLite)
-    
-- Criar:
-    
-    ```
+## License
 
-    GET /v1/pairs/favorites
-    
-    ```
-    
-    Para listar os pares salvos
-    
-- Adicionar documentação via **Swagger** para todas as rotas
-- Implementar testes de integração
-- Middleware global de **tratamento de erros**
-
----
-
-## 💎 Pontos Extras (opcional)
-
-- Utilizar **Clean Architecture** ou **DDD**
-- Usar **Docker** para setup e execução
-- Adicionar um **Logger customizado**
-- Job/Worker para atualização periódica do cache
-- Deploy em plataforma gratuita (Render, Vercel, Fly.io, etc)
-
----
-
-## ❌ O que **não** fazer
-
-- Um único commit com tudo
-- Copiar código de outro repositório (a gente percebe)
-- Usar IA para escrever o código — queremos ver seu raciocínio
-
----
-
-## 📊 Critérios de Avaliação
-
-Iremos fazer uma pré-avaliação da entrega do teste, e caso atenda os requisitos pelo menos do nível 1, o próximo passo é uma conversa técnica, onde você irá aprensentar o projeto e iremos avaliar:
-- Organização do projeto, estrutura e arquitetura.
-- Capacidade de comunicação.
-- Domínio de boas práticas do NestJS.
-
-Não é obrigatório fazer todos os niveis e extras, mas quanto mais pontos, mais seremos capazes de avaliar corretamente o seu nível de conhecimento.
-
-Boa sorte. 🍀
+Nest is [MIT licensed](LICENSE).
