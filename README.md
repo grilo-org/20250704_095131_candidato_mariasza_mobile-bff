@@ -1,73 +1,86 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Mottu Mobile BFF
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Backend For Frontend (BFF) desenvolvido com NestJS, integrando APIs públicas para fornecer dados de forma estruturada e otimizada para aplicações cliente.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+---
 
-## Description
+## 🚀 Tecnologias
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+- [NestJS](https://nestjs.com/) – estrutura modular e escalável
+- [Axios](https://axios-http.com/) – cliente HTTP para chamadas externas
+- TypeScript – tipagem segura
+- Node.js – ambiente de execução
 
-## Installation
+---
 
-```bash
-$ npm install
-```
+## 🔌 APIs Integradas
 
-## Running the app
+- [The Cat API](https://thecatapi.com/)
+- [Rick and Morty API](https://rickandmortyapi.com/)
 
-```bash
-# development
-$ npm run start
+---
 
-# watch mode
-$ npm run start:dev
+## 🧠 Decisões Técnicas
 
-# production mode
-$ npm run start:prod
-```
+- **Estrutura modular por recurso**, seguindo o padrão do NestJS (`resources/`) para manter o código coeso e de fácil navegação.
+- **Clean Architecture aplicada de forma pragmática**, respeitando o escopo do projeto:
+  - Controllers lidam com a entrada HTTP.
+  - Services funcionam como _use-cases_, centralizando a lógica de aplicação.
+  - As integrações com APIs externas foram extraídas para arquivos `.api.ts` dentro de cada recurso, promovendo baixo acoplamento.
+- Criação de um módulo genérico `HttpModule` dentro de `shared/http`, responsável por centralizar as chamadas HTTP usando Axios, facilitando manutenção, testes e extensões futuras (como interceptors ou retries).
+- Organização enxuta: evitamos estruturas com camadas excessivas para manter a simplicidade, sem abrir mão dos princípios de Clean Architecture.
 
-## Test
+---
+
+## 📁 Estrutura de Pastas
 
 ```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+src/
+├── main.ts
+├── app.module.ts
+├── resources/           # Recursos/domínios da aplicação
+│   ├── cats/
+│   ├── rickandmorty/
+│   └── pairs/
+└── shared/
+    └── http/            # Módulo genérico de chamadas HTTP
 ```
 
-## Support
+## 📦 Como rodar o projeto
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+# 1. Clone o repositório
+git clone <URL_DO_SEU_REPOSITORIO_PRIVADO>
+cd im-mottu-mobile-bff
+```
 
-## Stay in touch
+```bash
+# 2. Instale as dependências
+npm install
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+# 3. Rode o projeto em modo de desenvolvimento
+npm run start:dev
+```
 
-## License
+```bash
+# 4. Acesse o projeto no navegador
+http://localhost:3000
+```
 
-Nest is [MIT licensed](LICENSE).
+---
+
+## 🧪 Como executar os testes
+
+```bash
+# Testes unitários
+npm run test
+```
+
+```bash
+# Testes de integração (e2e)
+npm run test:e2e
+```
+
+---
