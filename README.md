@@ -122,6 +122,11 @@ npm run test rickandmorty
 npm run test pairs
 ```
 
+```bash
+# Testes e2e
+npm run test:e2e
+```
+
 ---
 
 ## 📚 Documentação da API
