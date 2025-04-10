@@ -2,6 +2,7 @@ import { Controller, Get } from '@nestjs/common';
 import { RickAndMortyService } from './rickandmorty.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { RickAndMortyCharacterResponseDto } from './dto/rickandmorty-character.response.dto';
+import { plainToInstance } from 'class-transformer';
 
 @ApiTags('Rick and Morty')
 @Controller('rickandmorty')
@@ -16,6 +17,10 @@ export class RickAndMortyController {
     type: [RickAndMortyCharacterResponseDto],
   })
   async getCharacters(): Promise<RickAndMortyCharacterResponseDto> {
-    return this.service.getRandomCharacter();
+    const result = await this.service.getRandomCharacter();
+
+    return plainToInstance(RickAndMortyCharacterResponseDto, result, {
+      excludeExtraneousValues: true,
+    });
   }
 }

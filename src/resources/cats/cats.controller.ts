@@ -1,3 +1,4 @@
+import { plainToInstance } from 'class-transformer';
 import { Controller, Get } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -16,6 +17,10 @@ export class CatsController {
     type: CatImageResponseDto,
   })
   async getRandomImage(): Promise<CatImageResponseDto> {
-    return this.catsService.getRandomCatImage();
+    const result = await this.catsService.getRandomCatImage();
+
+    return plainToInstance(CatImageResponseDto, result, {
+      excludeExtraneousValues: true,
+    });
   }
 }

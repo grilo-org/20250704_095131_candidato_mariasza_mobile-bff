@@ -21,4 +21,21 @@ export class RickAndMortyApiService {
       url,
     });
   }
+
+  async searchCharactersByName(
+    name: string,
+  ): Promise<RickAndMortyCharacterResponseDto[]> {
+    const baseUrl = this.config.get<string>('RICK_AND_MORTY_API_BASE_URL');
+    const url = `${baseUrl}/character`;
+
+    const response = await this.http.makeRequest<{
+      results: RickAndMortyCharacterResponseDto[];
+    }>({
+      method: 'GET',
+      url,
+      query: { name },
+    });
+
+    return response.results;
+  }
 }

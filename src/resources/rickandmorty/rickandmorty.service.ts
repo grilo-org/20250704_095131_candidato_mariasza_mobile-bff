@@ -26,4 +26,18 @@ export class RickAndMortyService {
       'Unable to retrieve a valid character after several attempts.',
     );
   }
+
+  async searchCharactersByName(
+    name: string,
+  ): Promise<RickAndMortyCharacterResponseDto[]> {
+    const characters = await this.api.searchCharactersByName(name);
+
+    if (!characters.length) {
+      throw new InternalServerErrorException(
+        'No characters found with the provided name.',
+      );
+    }
+
+    return characters;
+  }
 }
