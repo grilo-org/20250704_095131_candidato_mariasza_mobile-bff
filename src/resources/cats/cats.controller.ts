@@ -38,6 +38,10 @@ export class CatsController {
     description: 'Lista de raças retornada com sucesso',
     type: [CatBreedDto],
   })
+  @ApiResponse({
+    status: 500,
+    description: 'Erro ao buscar raças',
+  })
   async getAllBreeds(): Promise<CatBreedDto[]> {
     const breeds = await this.catsService.getAllBreeds();
     return plainToInstance(CatBreedDto, breeds, {

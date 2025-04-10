@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { PairsService } from './pairs.service';
-import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { ApiTags, ApiOperation, ApiResponse, ApiBody } from '@nestjs/swagger';
 import { PairResponseDto } from './dto/pairs.response.dto';
 import { SearchPairsQueryDto } from './dto/search-pairs-query.dto';
 import { plainToInstance } from 'class-transformer';
@@ -21,6 +21,10 @@ export class PairsController {
     description: 'Par gerado com sucesso',
     type: PairResponseDto,
   })
+  @ApiResponse({
+    status: 500,
+    description: 'Erro ao buscar dados externos',
+  })
   async getRandomPair(): Promise<PairResponseDto> {
     const result = await this.service.getRandomPair();
     return plainToInstance(PairResponseDto, result, {
@@ -38,6 +42,10 @@ export class PairsController {
     type: PairResponseDto,
   })
   @ApiResponse({ status: 404, description: 'Nenhum par encontrado' })
+  @ApiResponse({
+    status: 500,
+    description: 'Erro ao buscar dados externos',
+  })
   async searchPair(
     @Query() query: SearchPairsQueryDto,
   ): Promise<PairResponseDto> {
@@ -53,15 +61,31 @@ export class PairsController {
 
   @Post('favorite')
   @ApiOperation({ summary: 'Salva um par como favorito' })
-  @ApiResponse({ status: 201, description: 'Par salvo com sucesso' })
+  @ApiBody({ type: SavePairDto })
+  @ApiResponse({
+    status: 201,
+    description: 'Par favorito salvo com sucesso',
+  })
+  @ApiResponse({
+    status: 409,
+    description: 'Par já existe nos favoritos',
+  })
   async saveFavorite(@Body() body: SavePairDto): Promise<void> {
     await this.service.saveFavoritePair(body);
   }
 
   @Get('favorites')
   @ApiOperation({ summary: 'Lista os pares favoritos salvos' })
-  @ApiResponse({ status: 200, description: 'Lista de pares favoritos' })
+  @ApiResponse({
+    status: 200,
+    description: 'Lista de pares favoritos',
+    type: PairResponseDto,
+    isArray: true,
+  })
   async getFavorites(): Promise<PairResponseDto[]> {
-    return this.service.getFavoritePairs();
+    const result = await this.service.getFavoritePairs();
+    return plainToInstance(PairResponseDto, result, {
+      excludeExtraneousValues: true,
+    });
   }
 }
