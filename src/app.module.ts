@@ -5,6 +5,7 @@ import { PairsModule } from './resources/pairs/pairs.module';
 import { RickAndMortyModule } from './resources/rickandmorty/rickandmorty.module';
 import { ConfigModule } from '@nestjs/config';
 import { CacheModule } from '@nestjs/cache-manager';
+import { ScheduleModule } from '@nestjs/schedule';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { CacheModule } from '@nestjs/cache-manager';
       max: 100,
       isGlobal: true,
     }),
+    ScheduleModule.forRoot(),
     CatsModule,
     PairsModule,
     RickAndMortyModule,
