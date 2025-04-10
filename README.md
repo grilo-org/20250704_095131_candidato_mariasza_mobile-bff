@@ -4,6 +4,18 @@ Backend For Frontend (BFF) desenvolvido com NestJS, integrando APIs públicas pa
 
 ---
 
+## 🌍 Deploy
+
+O projeto está disponível online via Render:
+
+🔗 **[https://im-mottu-mobile-bff.onrender.com](https://im-mottu-mobile-bff.onrender.com)**
+
+A documentação (Swagger) pode ser acessada em:
+
+📘 **[https://im-mottu-mobile-bff.onrender.com/v1/docs](https://im-mottu-mobile-bff.onrender.com/v1/docs)**
+
+---
+
 ## 🚀 Tecnologias
 
 - [NestJS](https://nestjs.com/) – estrutura modular e escalável
@@ -131,10 +143,16 @@ npm run test:e2e
 
 ## 📚 Documentação da API
 
-A documentação Swagger está disponível após iniciar o projeto:
+A documentação Swagger está disponível localmente em:
 
 ```
-http://localhost:3000/docs
+http://localhost:3000/v1/docs
+```
+
+Ou online via Render:
+
+```
+https://im-mottu-mobile-bff.onrender.com/v1/docs
 ```
 
 ---
