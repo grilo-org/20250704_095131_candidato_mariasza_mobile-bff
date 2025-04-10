@@ -8,7 +8,7 @@ import { RickAndMortyCharacterResponseDto } from './dto/rickandmorty-character.r
 export class RickAndMortyController {
   constructor(private readonly service: RickAndMortyService) {}
 
-  @Get('characters')
+  @Get('random')
   @ApiOperation({ summary: 'Lista personagens do universo Rick and Morty' })
   @ApiResponse({
     status: 200,
