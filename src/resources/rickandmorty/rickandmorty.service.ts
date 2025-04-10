@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { RickAndMortyApiService } from './rickandmorty-api.service';
 import { RickAndMortyCharacterResponseDto } from './dto/rickandmorty-character.repsonse.dto';
 
@@ -8,7 +8,22 @@ export class RickAndMortyService {
 
   async getRandomCharacter(): Promise<RickAndMortyCharacterResponseDto> {
     const maxId = 826;
-    const randomId = Math.floor(Math.random() * maxId) + 1;
-    return this.api.getCharacterById(randomId);
+    const maxAttempts = 5;
+
+    for (let attempt = 1; attempt <= maxAttempts; attempt++) {
+      const randomId = Math.floor(Math.random() * maxId) + 1;
+
+      try {
+        return await this.api.getCharacterById(randomId);
+      } catch (error) {
+        if (error?.response?.status !== 404) {
+          throw error;
+        }
+      }
+    }
+
+    throw new InternalServerErrorException(
+      'Unable to retrieve a valid character after several attempts.',
+    );
   }
 }
