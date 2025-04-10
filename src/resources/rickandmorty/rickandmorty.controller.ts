@@ -1,6 +1,11 @@
 import { Controller, Get } from '@nestjs/common';
 import { RickAndMortyService } from './rickandmorty.service';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiExcludeEndpoint,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { RickAndMortyCharacterResponseDto } from './dto/rickandmorty-character.response.dto';
 import { plainToInstance } from 'class-transformer';
 
@@ -9,6 +14,7 @@ import { plainToInstance } from 'class-transformer';
 export class RickAndMortyController {
   constructor(private readonly service: RickAndMortyService) {}
 
+  @ApiExcludeEndpoint()
   @Get('random')
   @ApiOperation({ summary: 'Lista personagens do universo Rick and Morty' })
   @ApiResponse({

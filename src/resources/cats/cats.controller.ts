@@ -1,7 +1,12 @@
 import { plainToInstance } from 'class-transformer';
 import { Controller, Get } from '@nestjs/common';
 import { CatsService } from './cats.service';
-import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import {
+  ApiExcludeEndpoint,
+  ApiOperation,
+  ApiResponse,
+  ApiTags,
+} from '@nestjs/swagger';
 import { CatImageResponseDto } from './dto/cat-image.response.dto';
 
 @ApiTags('Cats')
@@ -9,6 +14,7 @@ import { CatImageResponseDto } from './dto/cat-image.response.dto';
 export class CatsController {
   constructor(private readonly catsService: CatsService) {}
 
+  @ApiExcludeEndpoint()
   @Get('random')
   @ApiOperation({ summary: 'Retorna uma imagem aleatória de gato' })
   @ApiResponse({
