@@ -116,8 +116,10 @@ npm run test
 ```
 
 ```bash
-# Testes de integração (e2e)
-npm run test:e2e
+# Testes de um recurso específico
+npm run test cats
+npm run test rickandmorty
+npm run test pairs
 ```
 
 ---
