@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from 'src/shared/http/http.service';
-import { CatImageResponseDto } from './dto/cat-image.repsonse.dto';
+import { CatImageResponseDto } from './dto/cat-image.response.dto';
 
 @Injectable()
 export class CatsApiService {

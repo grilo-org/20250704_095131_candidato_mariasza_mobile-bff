@@ -1,6 +1,6 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { RickAndMortyApiService } from './rickandmorty-api.service';
-import { RickAndMortyCharacterResponseDto } from './dto/rickandmorty-character.repsonse.dto';
+import { RickAndMortyCharacterResponseDto } from './dto/rickandmorty-character.response.dto';
 
 @Injectable()
 export class RickAndMortyService {

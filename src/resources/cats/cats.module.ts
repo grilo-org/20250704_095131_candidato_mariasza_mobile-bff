@@ -8,5 +8,6 @@ import { HttpModule } from 'src/shared/http/http.module';
   controllers: [CatsController],
   imports: [HttpModule],
   providers: [CatsService, CatsService, CatsApiService],
+  exports: [CatsService],
 })
 export class CatsModule {}

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { RickAndMortyCharacterResponseDto } from './dto/rickandmorty-character.repsonse.dto';
+import { RickAndMortyCharacterResponseDto } from './dto/rickandmorty-character.response.dto';
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from 'src/shared/http/http.service';
 

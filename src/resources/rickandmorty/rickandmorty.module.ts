@@ -8,5 +8,6 @@ import { HttpModule } from 'src/shared/http/http.module';
   imports: [HttpModule],
   controllers: [RickAndMortyController],
   providers: [RickAndMortyService, RickAndMortyApiService],
+  exports: [RickAndMortyService],
 })
 export class RickAndMortyModule {}

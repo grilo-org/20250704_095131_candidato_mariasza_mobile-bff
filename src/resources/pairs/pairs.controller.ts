@@ -1,34 +1,24 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get } from '@nestjs/common';
 import { PairsService } from './pairs.service';
-import { CreatePairDto } from './dto/create-pair.dto';
-import { UpdatePairDto } from './dto/update-pair.dto';
+import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
+import { PairResponseDto } from './dto/pairs.response.dto';
 
+@ApiTags('Pairs')
 @Controller('pairs')
 export class PairsController {
-  constructor(private readonly pairsService: PairsService) {}
-
-  @Post()
-  create(@Body() createPairDto: CreatePairDto) {
-    return this.pairsService.create(createPairDto);
-  }
+  constructor(private readonly service: PairsService) {}
 
   @Get()
-  findAll() {
-    return this.pairsService.findAll();
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.pairsService.findOne(+id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updatePairDto: UpdatePairDto) {
-    return this.pairsService.update(+id, updatePairDto);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.pairsService.remove(+id);
+  @ApiOperation({
+    summary:
+      'Retorna um par aleatório: um personagem de Rick and Morty + um gato',
+  })
+  @ApiResponse({
+    status: 200,
+    description: 'Par gerado com sucesso',
+    type: PairResponseDto,
+  })
+  async getRandomPair(): Promise<PairResponseDto> {
+    return this.service.getRandomPair();
   }
 }

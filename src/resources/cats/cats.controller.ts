@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { CatsService } from './cats.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { CatImageResponseDto } from './dto/cat-image.repsonse.dto';
+import { CatImageResponseDto } from './dto/cat-image.response.dto';
 
 @ApiTags('Cats')
 @Controller('cats')

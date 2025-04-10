@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { RickAndMortyService } from './rickandmorty.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { RickAndMortyCharacterResponseDto } from './dto/rickandmorty-character.repsonse.dto';
+import { RickAndMortyCharacterResponseDto } from './dto/rickandmorty-character.response.dto';
 
 @ApiTags('Rick and Morty')
 @Controller('rickandmorty')
