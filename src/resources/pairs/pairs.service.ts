@@ -1,4 +1,8 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import {
+  ConflictException,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common';
 import { RickAndMortyService } from '../rickandmorty/rickandmorty.service';
 import { CatsService } from '../cats/cats.service';
 import { PairResponseDto } from './dto/pairs.response.dto';
@@ -9,6 +13,8 @@ export class PairsService {
     private readonly rickService: RickAndMortyService,
     private readonly catService: CatsService,
   ) {}
+
+  private favorites: PairResponseDto[] = [];
 
   async getRandomPair(): Promise<PairResponseDto> {
     const [character, cat] = await Promise.all([
@@ -42,5 +48,22 @@ export class PairsService {
     const cat = cats[Math.floor(Math.random() * cats.length)];
 
     return { character, cat };
+  }
+
+  async saveFavoritePair(pair: PairResponseDto): Promise<void> {
+    const alreadyExists = this.favorites.some(
+      (fav) =>
+        fav.character.id === pair.character.id && fav.cat.id === pair.cat.id,
+    );
+
+    if (alreadyExists) {
+      throw new ConflictException('Este par já foi salvo como favorito.');
+    }
+
+    this.favorites.push(pair);
+  }
+
+  async getFavoritePairs(): Promise<PairResponseDto[]> {
+    return this.favorites;
   }
 }

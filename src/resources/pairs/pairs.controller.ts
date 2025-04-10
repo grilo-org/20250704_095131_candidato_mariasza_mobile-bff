@@ -1,9 +1,10 @@
-import { Controller, Get, Query } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query } from '@nestjs/common';
 import { PairsService } from './pairs.service';
 import { ApiTags, ApiOperation, ApiResponse } from '@nestjs/swagger';
 import { PairResponseDto } from './dto/pairs.response.dto';
 import { SearchPairsQueryDto } from './dto/search-pairs-query.dto';
 import { plainToInstance } from 'class-transformer';
+import { SavePairDto } from './dto/save-pair.dto';
 
 @ApiTags('Pairs')
 @Controller('pairs')
@@ -48,5 +49,19 @@ export class PairsController {
     return plainToInstance(PairResponseDto, result, {
       excludeExtraneousValues: true,
     });
+  }
+
+  @Post('favorite')
+  @ApiOperation({ summary: 'Salva um par como favorito' })
+  @ApiResponse({ status: 201, description: 'Par salvo com sucesso' })
+  async saveFavorite(@Body() body: SavePairDto): Promise<void> {
+    await this.service.saveFavoritePair(body);
+  }
+
+  @Get('favorites')
+  @ApiOperation({ summary: 'Lista os pares favoritos salvos' })
+  @ApiResponse({ status: 200, description: 'Lista de pares favoritos' })
+  async getFavorites(): Promise<PairResponseDto[]> {
+    return this.service.getFavoritePairs();
   }
 }

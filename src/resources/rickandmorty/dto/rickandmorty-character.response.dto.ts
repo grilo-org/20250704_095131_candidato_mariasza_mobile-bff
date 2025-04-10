@@ -9,6 +9,7 @@ export class LocationInfo {
 }
 
 export class RickAndMortyCharacterResponseDto {
+  @Expose()
   id: number;
 
   @Expose()
@@ -27,7 +28,6 @@ export class RickAndMortyCharacterResponseDto {
   gender: string;
   origin: LocationInfo;
   location: LocationInfo;
-
   episode: string[];
   url: string;
   created: string;
