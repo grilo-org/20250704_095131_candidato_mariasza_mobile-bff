@@ -1,6 +1,7 @@
 import { Injectable, InternalServerErrorException } from '@nestjs/common';
 import { CatsApiService } from './cats-api.service';
 import { CatImageResponseDto } from './dto/cat-image.response.dto';
+import { CatBreedDto } from './dto/cat-breed.dto';
 
 @Injectable()
 export class CatsService {
@@ -22,5 +23,9 @@ export class CatsService {
     }
 
     return cats;
+  }
+
+  async getAllBreeds(): Promise<CatBreedDto[]> {
+    return this.catsApi.getAllBreeds();
   }
 }

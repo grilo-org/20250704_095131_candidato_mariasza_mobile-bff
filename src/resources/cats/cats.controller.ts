@@ -8,6 +8,7 @@ import {
   ApiTags,
 } from '@nestjs/swagger';
 import { CatImageResponseDto } from './dto/cat-image.response.dto';
+import { CatBreedDto } from './dto/cat-breed.dto';
 
 @ApiTags('Cats')
 @Controller('cats')
@@ -26,6 +27,20 @@ export class CatsController {
     const result = await this.catsService.getRandomCatImage();
 
     return plainToInstance(CatImageResponseDto, result, {
+      excludeExtraneousValues: true,
+    });
+  }
+
+  @Get('breeds')
+  @ApiOperation({ summary: 'Lista todas as raças de gatos disponíveis' })
+  @ApiResponse({
+    status: 200,
+    description: 'Lista de raças retornada com sucesso',
+    type: [CatBreedDto],
+  })
+  async getAllBreeds(): Promise<CatBreedDto[]> {
+    const breeds = await this.catsService.getAllBreeds();
+    return plainToInstance(CatBreedDto, breeds, {
       excludeExtraneousValues: true,
     });
   }

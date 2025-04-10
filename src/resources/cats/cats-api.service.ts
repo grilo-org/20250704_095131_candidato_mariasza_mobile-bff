@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { HttpService } from 'src/shared/http/http.service';
 import { CatImageResponseDto } from './dto/cat-image.response.dto';
+import { CatBreedDto } from './dto/cat-breed.dto';
 
 @Injectable()
 export class CatsApiService {
@@ -40,6 +41,17 @@ export class CatsApiService {
       method: 'GET',
       url,
       query: { breed_ids: breedId, has_breeds: 1 },
+      headers: this.getHeaders(),
+    });
+  }
+
+  async getAllBreeds(): Promise<CatBreedDto[]> {
+    const baseUrl = this.config.get<string>('THE_CAT_API_BASE_URL');
+    const url = `${baseUrl}/breeds`;
+
+    return this.http.makeRequest<CatBreedDto[]>({
+      method: 'GET',
+      url,
       headers: this.getHeaders(),
     });
   }
