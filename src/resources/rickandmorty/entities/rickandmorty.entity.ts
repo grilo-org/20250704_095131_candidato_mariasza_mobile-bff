@@ -1,1 +1,1 @@
-export class Rickandmorty {}
+export class RickAndMorty {}

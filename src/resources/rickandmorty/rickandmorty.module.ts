@@ -1,10 +1,12 @@
 import { Module } from '@nestjs/common';
-import { RickandmortyService } from './rickandmorty.service';
-import { RickandmortyController } from './rickandmorty.controller';
-import { RickandmortyApiService } from './rickandmorty-api.service';
+import { RickAndMortyController } from './rickandmorty.controller';
+import { RickAndMortyService } from './rickandmorty.service';
+import { RickAndMortyApiService } from './rickandmorty-api.service';
+import { HttpModule } from 'src/shared/http/http.module';
 
 @Module({
-  controllers: [RickandmortyController],
-  providers: [RickandmortyService, RickandmortyApiService],
+  imports: [HttpModule],
+  controllers: [RickAndMortyController],
+  providers: [RickAndMortyService, RickAndMortyApiService],
 })
-export class RickandmortyModule {}
+export class RickAndMortyModule {}

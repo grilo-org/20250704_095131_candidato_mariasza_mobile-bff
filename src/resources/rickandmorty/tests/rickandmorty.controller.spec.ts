@@ -1,17 +1,17 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { RickandmortyController } from '../rickandmorty.controller';
-import { RickandmortyService } from '../rickandmorty.service';
+import { RickAndMortyController } from '../rickandmorty.controller';
+import { RickAndMortyService } from '../rickandmorty.service';
 
-describe('RickandmortyController', () => {
-  let controller: RickandmortyController;
+describe('RickAndMortyController', () => {
+  let controller: RickAndMortyController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [RickandmortyController],
-      providers: [RickandmortyService],
+      controllers: [RickAndMortyController],
+      providers: [RickAndMortyService],
     }).compile();
 
-    controller = module.get<RickandmortyController>(RickandmortyController);
+    controller = module.get<RickAndMortyController>(RickAndMortyController);
   });
 
   it('should be defined', () => {
