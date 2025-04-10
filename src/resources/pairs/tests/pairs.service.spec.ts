@@ -2,12 +2,17 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { PairsService } from '../pairs.service';
 import { RickAndMortyService } from '../../rickandmorty/rickandmorty.service';
 import { CatsService } from '../../cats/cats.service';
-import { NotFoundException } from '@nestjs/common';
+import { ConflictException, NotFoundException } from '@nestjs/common';
 
 describe('PairsService', () => {
   let service: PairsService;
   let rickService: RickAndMortyService;
   let catService: CatsService;
+
+  const mockPair = {
+    character: { id: 1, name: 'Rick' },
+    cat: { id: 'abc', url: 'https://cat.url' },
+  };
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
@@ -105,6 +110,35 @@ describe('PairsService', () => {
       await expect(
         service.searchFilteredPair('rick', 'invalid'),
       ).rejects.toThrow(NotFoundException);
+    });
+  });
+  describe('saveFavoritePair', () => {
+    it('should save a favorite pair if not already present', async () => {
+      await service.saveFavoritePair(mockPair as any);
+      const favorites = await service.getFavoritePairs();
+      expect(favorites).toContainEqual(mockPair as any);
+    });
+
+    it('should throw ConflictException if pair already exists', async () => {
+      await service.saveFavoritePair(mockPair as any);
+
+      await expect(service.saveFavoritePair(mockPair as any)).rejects.toThrow(
+        ConflictException,
+      );
+    });
+  });
+
+  describe('getFavoritePairs', () => {
+    it('should return an array of favorite pairs', async () => {
+      await service.saveFavoritePair(mockPair as any);
+      const result = await service.getFavoritePairs();
+      expect(result.length).toBe(1);
+      expect(result[0]).toEqual(mockPair as any);
+    });
+
+    it('should return an empty array if no pairs are saved', async () => {
+      const result = await service.getFavoritePairs();
+      expect(result).toEqual([]);
     });
   });
 });
