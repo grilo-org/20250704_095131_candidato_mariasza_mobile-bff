@@ -6,6 +6,7 @@ import {
 import { RickAndMortyService } from '../rickandmorty/rickandmorty.service';
 import { CatsService } from '../cats/cats.service';
 import { PairResponseDto } from './dto/pairs.response.dto';
+import { SavePairDto } from './dto/save-pair.dto';
 
 @Injectable()
 export class PairsService {
@@ -50,7 +51,7 @@ export class PairsService {
     return { character, cat };
   }
 
-  async saveFavoritePair(pair: PairResponseDto): Promise<void> {
+  async saveFavoritePair(pair: SavePairDto): Promise<void> {
     const alreadyExists = this.favorites.some(
       (fav) =>
         fav.character.id === pair.character.id && fav.cat.id === pair.cat.id,
